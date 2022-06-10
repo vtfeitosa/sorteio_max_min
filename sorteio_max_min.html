@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Home</title>
+        <link rel="stylesheet" href="sorteio_max_min.css" />
+    </head>
+
+    <body>
+        <header>
+            <!-- Topo da Página -->
+            <div class="development">
+                Developed by <a href="https://github.com/vtfeitosa" target="_blank">vtfeitosa</a>
+            </div>
+        </header>
+        <main>
+            <div>
+                <h1>Sorteio Entre Dois Números</h1>
+                <p>
+                    Digite dois números, um em cada caixa. Ao pressionar o botão de sorteio,<br/>
+                    um súmero será sorteado aleatoriamente entre os dois escolhidos (máx e mín).
+                </p>
+            </div>
+            <div class="n_box">
+                <input id="min" type="number" placeholder="Mínimo">
+                <input id="max" type="number" placeholder="Máximo">
+            </div>
+            <div>
+                <button type="button" onclick= "sorteio()" >Sortear</button>
+                <p id="result"></p>
+            </div>
+        </main>
+        <footer>
+            <!-- Rodapé da Página -->
+            <section class="footer_extra">
+                <p>So, this page was developed as an activity of the Introduction to HTML Course at Alpha EdTech, by the student <a href="https://www.linkedin.com/in/vtfeitosa/" target="_blank">Vitória Feitosa</a>.<br/> 
+                    All the code is being studied, patience... Thank you for understanding. :)
+                </p>
+                <p>Last Update on 10 | June | 2022 </p>
+            </section>
+        </footer>
+        <script>
+            let sortear = document.querySelector("button");
+
+            sortear.onclick = function() {
+                let min = parseInt(document.getElementById("min").value.padStart(1,'0'));
+                let max = parseInt(document.getElementById("max").value.padStart(1,'0'));
+
+                const sorteado = Math.floor(Math.random() * (max-min+1)) + min;
+
+                if (isNaN(min) || isNaN(max)){
+                    document.getElementById("result").innerHTML = "Insira um número inteiro, por gentileza!";
+                } else if (min > max) {
+                    document.getElementById("result").innerHTML = "O número Mínimo precisa ser menor que o Máximo para que o sorteio funcione.";
+                } else {
+                    document.getElementById("result").innerHTML = sorteado;
+                }
+            }
+        </script>
+    </body>
+</html>
